@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <ServiceDefinition name="SigSciAgentService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+    <WokerRole name="SigSciAgent" vmsize="Small" enableNativeCodeExecution="true">
+      <Endpoints>
+        <InputEndpoint name="Agent" protocol="tcp" port="9999" />
+      </Endpoints>
+      <Runtime executionContext="limited">
+        <Environment>
+         <Variable name="SIGSCI_ACCESSKEYID" value="587b33ba-bd7d-48bd-b1b9-c03c847f4755" />
+         <Variable name="SIGSCI_SECRETACCESSKEY" value="XXzBpuxhn1CajpCc9ebRg-rYSoUllLvpqeTSKbceHXA" /> 
+         <Variable name="SIGSCI_RPC_ADDRESS" value="0.0.0.0:9999" />
+         <Variable name="SIGSCI_RPC_VERSION" value="1" />  
+        </Environment>
+        <EntryPoint>
+          <ProgramEntryPoint commandLine="sigsci-agent.exe" setReadyOnProcessStart="true" />
+        </EntryPoint>
+      </Runtime>
+    </WorkerRole>
+  </ServiceDefinition>
